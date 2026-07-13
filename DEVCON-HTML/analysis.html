@@ -225,34 +225,34 @@
       <span class="dot"></span> COHORT_01 
     </div>
     <h1 class="display">DEVCON Laguna is being built by students, in Santa Rosa and Cabuyao, and they want to run it themselves.</h1>
-    <p class="sub">A read of all 60 Cohort 1 applications: who's applying, what they want to learn, and who's ready to organize.</p>
+    <p class="sub">A read of all <span id="total-applicants-1">60</span> Cohort 1 applications: who's applying, what they want to learn, and who's ready to organize.</p>
 
     <div class="hero-stats mono">
       <div class="hero-stat">
         <div class="num-wrapper">
-          <div class="num main-val">85.0%</div>
-          <div class="num hover-val">51 / 60</div>
+          <div class="num main-val" id="stat-undergrad-percent">85.0%</div>
+          <div class="num hover-val" id="stat-undergrad-count">51 / 60</div>
         </div>
         <div class="lbl">Undergrad tech students</div>
       </div>
       <div class="hero-stat">
         <div class="num-wrapper">
-          <div class="num main-val">63.3%</div>
-          <div class="num hover-val">38 / 60</div>
+          <div class="num main-val" id="stat-geo-percent">63.3%</div>
+          <div class="num hover-val" id="stat-geo-count">38 / 60</div>
         </div>
         <div class="lbl">From Santa Rosa + Cabuyao</div>
       </div>
       <div class="hero-stat">
         <div class="num-wrapper">
-          <div class="num main-val">43</div>
-          <div class="num hover-val">71.7%</div>
+          <div class="num main-val" id="stat-frontend-count">43</div>
+          <div class="num hover-val" id="stat-frontend-percent">71.7%</div>
         </div>
         <div class="lbl">Interested in Frontend Dev</div>
       </div>
       <div class="hero-stat">
         <div class="num-wrapper">
-          <div class="num main-val">66.7%</div>
-          <div class="num hover-val">40 / 60</div>
+          <div class="num main-val" id="stat-volunteer-percent">66.7%</div>
+          <div class="num hover-val" id="stat-volunteer-count">40 / 60</div>
         </div>
         <div class="lbl">Want a volunteer role</div>
       </div>
@@ -263,20 +263,20 @@
   <section>
     <div class="eyebrow">[ 01 // Composition ]</div>
     <h2>A student-driven applicant base</h2>
-    <p class="section-intro">51 of 60 applicants are undergraduate tech students (IT, CS, CpE and related programs) — the community will lean energetic, learning-first, and hungry for a bridge from classroom to industry.</p>
+    <p class="section-intro"><span id="undergrad-count-2">51</span> of <span id="total-applicants-2">60</span> applicants are undergraduate tech students (IT, CS, CpE and related programs) — the community will lean energetic, learning-first, and hungry for a bridge from classroom to industry.</p>
 
     <div class="grid-2">
       <div class="card">
         <h3>Applicant background</h3>
-        <div class="card-note">Current primary affiliation, all 60 applicants</div>
+        <div class="card-note">Current primary affiliation, all <span id="total-applicants-6">60</span> applicants</div>
         <div class="chart-box"><canvas id="chartComposition"></canvas></div>
       </div>
       <div class="card callout">
         <div class="big-stat-wrapper">
-          <div class="big-stat main-val">51 / 60</div>
-          <div class="big-stat hover-val">85.0%</div>
+          <div class="big-stat main-val" id="bigstat-undergrad-count">51 / 60</div>
+          <div class="big-stat hover-val" id="bigstat-undergrad-percent">85.0%</div>
         </div>
-        <p>are current undergraduate tech students. The rest: 5 employed tech professionals, 2 undergrad non-tech students, 1 freelancer/self-employed developer, and 1 tech enthusiast/career switcher.</p>
+        <p>are current undergraduate tech students. The rest: <span id="aff-professional">5</span> employed tech professionals, <span id="aff-nontech">2</span> undergrad non-tech students, <span id="aff-freelancer">1</span> freelancer/self-employed developer, and <span id="aff-enthusiast">1</span> tech enthusiast/career switcher.</p>
         <div class="insight-card">
           <strong>Read:</strong> program design should assume most attendees are still in school — think academic-term scheduling, campus partnerships, and content that bridges coursework to real jobs.
         </div>
@@ -288,7 +288,7 @@
   <section>
     <div class="eyebrow">[ 02 // Geography ]</div>
     <h2>Two cities, one clear starting point</h2>
-    <p class="section-intro">Santa Rosa (20) and Cabuyao (18) together account for 38 of 60 applicants — over 63% of the cohort. Biñan is a clear third hub; everywhere else is thin.</p>
+    <p class="section-intro" id="geo-text">Santa Rosa (20) and Cabuyao (18) together account for 38 of 60 applicants — over 63% of the cohort. Biñan is a clear third hub; everywhere else is thin.</p>
 
     <div class="card">
       <h3>Applicants by city/municipality</h3>
@@ -320,7 +320,7 @@
       </div>
       <div class="card callout">
         <div class="insight-card">
-          <strong>Read:</strong> most applicants place themselves at an intermediate level (2–3 out of 5, 47 of 60) — solid ground for hands-on workshops and hackathons, not introductory "what is a variable" content. Nobody rated themselves a 5.
+          <strong id="skill-text-header">Read:</strong> <span id="skill-text-body">most applicants place themselves at an intermediate level (2–3 out of 5, 47 of 60) — solid ground for hands-on workshops and hackathons, not introductory "what is a variable" content. Nobody rated themselves a 5.</span>
         </div>
       </div>
     </div>
@@ -330,7 +330,7 @@
   <section>
     <div class="eyebrow">[ 04 // Motivation ]</div>
     <h2>Why they're actually joining</h2>
-    <p class="section-intro">Networking and upskilling dominate; open-source/civic tech and hackathons are present but secondary. Multi-select, out of 60 applicants.</p>
+    <p class="section-intro">Networking and upskilling dominate; open-source/civic tech and hackathons are present but secondary. Multi-select, out of <span id="total-applicants-4">60</span> applicants.</p>
 
     <div class="card">
       <h3>Primary motivation for applying</h3>
@@ -345,13 +345,13 @@
   <section style="border-bottom:none;">
     <div class="eyebrow">[ 05 // Organizing Capacity ]</div>
     <h2>A ready-made core team, unevenly distributed</h2>
-    <p class="section-intro">40 of 60 applicants (66.7%) want an active volunteer or committee role rather than passive membership. Interest concentrates in event operations and technical work.</p>
+    <p class="section-intro"><span id="volunteer-count-2">40</span> of <span id="total-applicants-5">60</span> applicants (<span id="volunteer-percent-2">66.7%</span>) want an active volunteer or committee role rather than passive membership. Interest concentrates in event operations and technical work.</p>
 
     <div class="grid-2">
       <div class="card callout">
         <div class="big-stat-wrapper">
-          <div class="big-stat main-val">66.7%</div>
-          <div class="big-stat hover-val">40 / 60</div>
+          <div class="big-stat main-val" id="bigstat-volunteer-percent">66.7%</div>
+          <div class="big-stat hover-val" id="bigstat-volunteer-count">40 / 60</div>
         </div>
         <p>of applicants want to actively join lead roles in DEVCON Laguna.</p>
       </div>
@@ -363,7 +363,7 @@
 
     <div class="card" style="margin-top:20px;">
       <h3>Volunteer preference by committee</h3>
-      <div class="card-note">Multi-select, among the 44 applicants who named a committee preference</div>
+      <div class="card-note">Multi-select, among the <span id="committee-total-count">44</span> applicants who named a committee preference</div>
       <div class="chart-box tall"><canvas id="chartCommittee"></canvas></div>
 
       <div class="insight-card" style="margin-top:16px;">
@@ -405,183 +405,433 @@ function tip(){
   };
 }
 
-// 01 Composition
-new Chart(document.getElementById('chartComposition'), {
-  type:'doughnut',
-  data:{
-    labels:['Undergrad Tech Student','Employed Tech Professional','Undergrad Non-Tech Student','Freelancer / Self-Employed Dev','Tech Enthusiast / Career Switcher'],
-    datasets:[{data:[51,5,2,1,1], backgroundColor:[amber, teal, '#2A3355', violet, coral], borderColor:'#161D33', borderWidth:4}]
-  },
-  options:{
-    responsive:true,
-    maintainAspectRatio:false,
-    cutout:'62%',
-    plugins:{
-      legend:{position:'bottom', labels:{boxWidth:10, boxHeight:10, padding:14, font:{size:11}}},
-      tooltip: tip()
-    }
-  }
-});
+let charts = {};
 
-// 02 Geography
-new Chart(document.getElementById('chartGeo'), {
-  type:'bar',
-  data:{
-    labels:['City of Santa Rosa','City of Cabuyao','City of Biñan','City of Calamba','City of San Pedro','Outside Laguna','City of San Pablo','Santa Cruz','Los Baños'],
-    datasets:[{
-      data:[20,18,7,4,4,3,2,1,1],
-      backgroundColor:[amber, teal, violet, '#2A3355','#2A3355','#2A3355','#2A3355','#2A3355','#2A3355'],
-      borderRadius:6,
-      barThickness:26
-    }]
-  },
-  options:{
-    indexAxis:'y',
-    responsive:true,
-    maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip: tip()},
-    scales:{
-      x:{grid:{color:gridColor}, ticks:{stepSize:5}},
-      y:{grid:{display:false}, ticks:{color:paper, font:{size:12.5}}}
-    }
-  }
-});
+function initCharts(data) {
+  Object.values(charts).forEach(chart => {
+    if (chart) chart.destroy();
+  });
+  charts = {};
 
-// 03 Interests
-new Chart(document.getElementById('chartInterests'), {
-  type:'bar',
-  data:{
-    labels:[
-      ['Frontend Web', 'Development'],
-      ['Backend Web', 'Development'],
-      ['Data Science /', 'AI / ML'],
-      ['UI/UX Design &', 'Product Research'],
-      ['Cybersecurity &', 'Network Admin.'],
-      ['Mobile App', 'Development'],
-      ['Cloud Computing', '& DevOps'],
-      ['Project Mgmt /', 'Agile Scrum'],
-      ['Blockchain /', 'Web3 Technologies']
-    ],
-    datasets:[{
-      data:[43,36,32,32,24,22,20,19,10],
-      backgroundColor:[amber, teal, violet, violet, coral, '#2A3355','#2A3355','#2A3355','#2A3355'],
-      borderRadius:6,
-      barThickness:26
-    }]
-  },
-  options:{
-    indexAxis:'y',
-    responsive:true,
-    maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip: tip()},
-    scales:{
-      x:{grid:{color:gridColor}, ticks:{stepSize:10}, max:45},
-      y:{grid:{display:false}, ticks:{color:paper, font:{size:12.5}}}
+  charts.composition = new Chart(document.getElementById('chartComposition'), {
+    type:'doughnut',
+    data:{
+      labels:['Undergrad Tech Student','Employed Tech Professional','Undergrad Non-Tech Student','Freelancer / Self-Employed Dev','Tech Enthusiast / Career Switcher'],
+      datasets:[{
+        data:[
+          data.composition.undergradTech,
+          data.composition.employedTech,
+          data.composition.undergradNonTech,
+          data.composition.freelancer,
+          data.composition.enthusiast
+        ],
+        backgroundColor:[amber, teal, '#2A3355', violet, coral],
+        borderColor:'#161D33',
+        borderWidth:4
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      cutout:'62%',
+      plugins:{
+        legend:{position:'bottom', labels:{boxWidth:10, boxHeight:10, padding:14, font:{size:11}}},
+        tooltip: tip()
+      }
     }
-  }
-});
+  });
 
-// Skill level
-new Chart(document.getElementById('chartSkill'), {
-  type:'bar',
-  data:{
-    labels:['1','2','3','4','5'],
-    datasets:[{
-      data:[2,20,27,11,0],
-      backgroundColor:[ '#2A3355', teal, teal, '#2A3355', '#2A3355'],
-      borderRadius:6,
-      barThickness:44
-    }]
-  },
-  options:{
-    responsive:true,
-    maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip: tip()},
-    scales:{
-      x:{grid:{display:false}, title:{display:true, text:'Self-rated skill (1=beginner, 5=advanced)', color:muted, font:{size:11.5}}},
-      y:{grid:{color:gridColor}, beginAtZero:true}
+  charts.geo = new Chart(document.getElementById('chartGeo'), {
+    type:'bar',
+    data:{
+      labels: data.geo.labels,
+      datasets:[{
+        data: data.geo.values,
+        backgroundColor:[amber, teal, violet, '#2A3355','#2A3355','#2A3355','#2A3355','#2A3355','#2A3355'],
+        borderRadius:6,
+        barThickness:26
+      }]
+    },
+    options:{
+      indexAxis:'y',
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip: tip()},
+      scales:{
+        x:{grid:{color:gridColor}, ticks:{stepSize:5}},
+        y:{grid:{display:false}, ticks:{color:paper, font:{size:12.5}}}
+      }
     }
-  }
-});
+  });
 
-// Motivation
-new Chart(document.getElementById('chartMotivation'), {
-  type:'bar',
-  data:{
-    labels:[
-      ['Networking with', 'tech peers & industry'],
-      ['Upskilling via', 'workshops & bootcamps'],
-      ['Mentorship &', 'career/job opportunities'],
-      ['Contributing to', 'civic tech / open-source'],
-      ['Hackathons &', 'coding competitions']
-    ],
-    datasets:[{
-      data:[59,54,49,33,26],
-      backgroundColor:[amber, teal, violet, '#2A3355','#2A3355'],
-      borderRadius:6,
-      barThickness:32
-    }]
-  },
-  options:{
-    indexAxis:'y',
-    responsive:true,
-    maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip: tip()},
-    scales:{
-      x:{grid:{color:gridColor}, ticks:{stepSize:10}, max:62},
-      y:{grid:{display:false}, ticks:{color:paper}}
+  charts.interests = new Chart(document.getElementById('chartInterests'), {
+    type:'bar',
+    data:{
+      labels:[
+        ['Frontend Web', 'Development'],
+        ['Backend Web', 'Development'],
+        ['Data Science /', 'AI / ML'],
+        ['UI/UX Design &', 'Product Research'],
+        ['Cybersecurity &', 'Network Admin.'],
+        ['Mobile App', 'Development'],
+        ['Cloud Computing', '& DevOps'],
+        ['Project Mgmt /', 'Agile Scrum'],
+        ['Blockchain /', 'Web3 Technologies']
+      ],
+      datasets:[{
+        data:[
+          data.interests.frontend,
+          data.interests.backend,
+          data.interests.datascience,
+          data.interests.uiux,
+          data.interests.cybersecurity,
+          data.interests.mobile,
+          data.interests.cloud,
+          data.interests.projectmgmt,
+          data.interests.blockchain
+        ],
+        backgroundColor:[amber, teal, violet, violet, coral, '#2A3355','#2A3355','#2A3355','#2A3355'],
+        borderRadius:6,
+        barThickness:26
+      }]
+    },
+    options:{
+      indexAxis:'y',
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip: tip()},
+      scales:{
+        x:{grid:{color:gridColor}, ticks:{stepSize:10}},
+        y:{grid:{display:false}, ticks:{color:paper, font:{size:12.5}}}
+      }
     }
-  }
-});
+  });
 
-// Volunteer intent
-new Chart(document.getElementById('chartVolunteer'), {
-  type:'doughnut',
-  data:{
-    labels:['Wants volunteer/committee role','Prefers general member for now'],
-    datasets:[{data:[40,20], backgroundColor:[teal,'#2A3355'], borderColor:'#161D33', borderWidth:4}]
-  },
-  options:{
-    responsive:true,
-    maintainAspectRatio:false,
-    cutout:'68%',
-    plugins:{
-      legend:{position:'bottom', labels:{boxWidth:10, boxHeight:10, padding:16, font:{size:12}}},
-      tooltip: tip()
+  charts.skill = new Chart(document.getElementById('chartSkill'), {
+    type:'bar',
+    data:{
+      labels:['1','2','3','4','5'],
+      datasets:[{
+        data:[
+          data.skills.lvl1,
+          data.skills.lvl2,
+          data.skills.lvl3,
+          data.skills.lvl4,
+          data.skills.lvl5
+        ],
+        backgroundColor:[ '#2A3355', teal, teal, '#2A3355', '#2A3355'],
+        borderRadius:6,
+        barThickness:44
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip: tip()},
+      scales:{
+        x:{grid:{display:false}, title:{display:true, text:'Self-rated skill (1=beginner, 5=advanced)', color:muted, font:{size:11.5}}},
+        y:{grid:{color:gridColor}, beginAtZero:true}
+      }
     }
-  }
-});
+  });
 
-// Committees
-new Chart(document.getElementById('chartCommittee'), {
-  type:'bar',
-  data:{
-    labels:[
-      ['In-event Program', 'Operations'],
-      'Technical & Dev.',
-      ['Marketing, Creatives', '& Content'],
-      'Finance & Logistics',
-      ['Internal & External', 'Communications'],
-      ['Partnership &', 'Fundraising']
-    ],
-    datasets:[{
-      data:[25,22,15,11,10,7],
-      backgroundColor:[amber, teal, violet, '#2A3355','#2A3355', coral],
-      borderRadius:6,
-      barThickness:32
-    }]
-  },
-  options:{
-    indexAxis:'y',
-    responsive:true,
-    maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip: tip()},
-    scales:{
-      x:{grid:{color:gridColor}, max:28},
-      y:{grid:{display:false}, ticks:{color:paper, font:{size:12.5}}}
+  charts.motivation = new Chart(document.getElementById('chartMotivation'), {
+    type:'bar',
+    data:{
+      labels:[
+        ['Networking with', 'tech peers & industry'],
+        ['Upskilling via', 'workshops & bootcamps'],
+        ['Mentorship &', 'career/job opportunities'],
+        ['Contributing to', 'civic tech / open-source'],
+        ['Hackathons &', 'coding competitions']
+      ],
+      datasets:[{
+        data:[
+          data.motivations.networking,
+          data.motivations.upskilling,
+          data.motivations.mentorship,
+          data.motivations.civic,
+          data.motivations.hackathons
+        ],
+        backgroundColor:[amber, teal, violet, '#2A3355','#2A3355'],
+        borderRadius:6,
+        barThickness:32
+      }]
+    },
+    options:{
+      indexAxis:'y',
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip: tip()},
+      scales:{
+        x:{grid:{color:gridColor}, ticks:{stepSize:10}},
+        y:{grid:{display:false}, ticks:{color:paper}}
+      }
+    }
+  });
+
+  charts.volunteer = new Chart(document.getElementById('chartVolunteer'), {
+    type:'doughnut',
+    data:{
+      labels:['Wants volunteer/committee role','Prefers general member for now'],
+      datasets:[{data:[data.volunteer.yes, data.volunteer.no], backgroundColor:[teal,'#2A3355'], borderColor:'#161D33', borderWidth:4}]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      cutout:'68%',
+      plugins:{
+        legend:{position:'bottom', labels:{boxWidth:10, boxHeight:10, padding:16, font:{size:12}}},
+        tooltip: tip()
+      }
+    }
+  });
+
+  charts.committee = new Chart(document.getElementById('chartCommittee'), {
+    type:'bar',
+    data:{
+      labels:[
+        ['In-event Program', 'Operations'],
+        'Technical & Dev.',
+        ['Marketing, Creatives', '& Content'],
+        'Finance & Logistics',
+        ['Internal & External', 'Communications'],
+        ['Partnership &', 'Fundraising']
+      ],
+      datasets:[{
+        data:[
+          data.committees.program,
+          data.committees.tech,
+          data.committees.marketing,
+          data.committees.finance,
+          data.committees.comms,
+          data.committees.partnership
+        ],
+        backgroundColor:[amber, teal, violet, '#2A3355','#2A3355', coral],
+        borderRadius:6,
+        barThickness:32
+      }]
+    },
+    options:{
+      indexAxis:'y',
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip: tip()},
+      scales:{
+        x:{grid:{color:gridColor}},
+        y:{grid:{display:false}, ticks:{color:paper, font:{size:12.5}}}
+      }
+    }
+  });
+}
+
+function processAndRender(apiData) {
+  const total = apiData.totalApplicants || 60;
+  
+  const undergradTech = apiData.affiliations["Undergraduate Tech Student (IT, CS, CpE, etc.)"] || 0;
+  const employedTech = apiData.affiliations["Employed Tech Professional (Software Engineer, QA, PM, UI/UX, etc.)"] || 0;
+  const undergradNonTech = apiData.affiliations["Undergraduate Non-Tech Student"] || 0;
+  const freelancer = apiData.affiliations["Freelancer / Self-Employed Developer"] || 0;
+  const enthusiast = apiData.affiliations["Tech Enthusiast / Career Switcher"] || 0;
+  const undergradTechPercent = ((undergradTech / total) * 100).toFixed(1);
+
+  let geoLabels = ['City of Santa Rosa','City of Cabuyao','City of Biñan','City of Calamba','City of San Pedro','Outside Laguna','City of San Pablo','Santa Cruz','Los Baños'];
+  let geoValues = [20, 18, 7, 4, 4, 3, 2, 1, 1];
+  let santaRosa = 20;
+  let cabuyao = 18;
+
+  if (apiData.cities && Object.keys(apiData.cities).length > 0) {
+    const sorted = Object.entries(apiData.cities).sort((a,b) => b[1] - a[1]);
+    geoLabels = sorted.map(e => e[0]);
+    geoValues = sorted.map(e => e[1]);
+    
+    santaRosa = 0;
+    cabuyao = 0;
+    for (const [city, count] of Object.entries(apiData.cities)) {
+      const lower = city.toLowerCase();
+      if (lower.includes('santa rosa')) santaRosa += count;
+      if (lower.includes('cabuyao')) cabuyao += count;
     }
   }
-});
+  const mainCitiesTotal = santaRosa + cabuyao;
+  const mainCitiesPercent = ((mainCitiesTotal / total) * 100).toFixed(1);
+
+  const getStackVal = (needle, def) => {
+    if (!apiData.techStacks) return def;
+    // Sum counts for any stack matching the needle keyword
+    let count = 0;
+    let found = false;
+    for (const [key, val] of Object.entries(apiData.techStacks)) {
+      if (key.toLowerCase().includes(needle.toLowerCase())) {
+        count += val;
+        found = true;
+      }
+    }
+    return found ? count : def;
+  };
+  const frontend = getStackVal("Frontend", 43);
+  const backend = getStackVal("Backend", 36);
+  const datascience = getStackVal("Data Science", 32);
+  const uiux = getStackVal("UI/UX", 32);
+  const cybersecurity = getStackVal("Cybersecurity", 24);
+  const mobile = getStackVal("Mobile", 22);
+  const cloud = getStackVal("Cloud", 20);
+  const projectmgmt = getStackVal("Project", 19);
+  const blockchain = getStackVal("Blockchain", 10);
+  const frontendPercent = ((frontend / total) * 100).toFixed(1);
+
+  const skills = apiData.skillLevels || {};
+  const lvl1 = skills["1"] || 0;
+  const lvl2 = skills["2"] || 0;
+  const lvl3 = skills["3"] || 0;
+  const lvl4 = skills["4"] || 0;
+  const lvl5 = skills["5"] || 0;
+  const midLevelCount = lvl2 + lvl3;
+
+  const motivations = { networking: 0, upskilling: 0, mentorship: 0, civic: 0, hackathons: 0 };
+  if (apiData.motivations) {
+    for (const [key, count] of Object.entries(apiData.motivations)) {
+      if (key.includes("Networking")) motivations.networking += count;
+      if (key.includes("Upskilling")) motivations.upskilling += count;
+      if (key.includes("Mentorship") || key.includes("career") || key.includes("job")) motivations.mentorship += count;
+      if (key.includes("civic tech") || key.includes("open-source")) motivations.civic += count;
+      if (key.includes("hackathons") || key.includes("competitions") || key.includes("competions")) motivations.hackathons += count;
+    }
+  } else {
+    motivations.networking = 59;
+    motivations.upskilling = 54;
+    motivations.mentorship = 49;
+    motivations.civic = 33;
+    motivations.hackathons = 26;
+  }
+
+  let volunteerYes = 40;
+  let volunteerNo = 20;
+  if (apiData.volunteerInterest) {
+    volunteerYes = 0;
+    volunteerNo = 0;
+    for (const [key, count] of Object.entries(apiData.volunteerInterest)) {
+      if (key.toLowerCase().includes("yes") || key.toLowerCase().includes("volunteer")) {
+        volunteerYes += count;
+      } else {
+        volunteerNo += count;
+      }
+    }
+  }
+  const volunteerPercent = ((volunteerYes / total) * 100).toFixed(1);
+
+  const committees = { program: 0, tech: 0, marketing: 0, finance: 0, comms: 0, partnership: 0 };
+  let committeeTotal = 0;
+  if (apiData.committees) {
+    for (const [key, count] of Object.entries(apiData.committees)) {
+      if (key.includes("Program Operations")) committees.program += count;
+      if (key.includes("Technical")) committees.tech += count;
+      if (key.includes("Marketing") || key.includes("Creatives")) committees.marketing += count;
+      if (key.includes("Finance") || key.includes("Logistics")) committees.finance += count;
+      if (key.includes("Communications")) committees.comms += count;
+      if (key.includes("Partnership") || key.includes("Fundraising")) committees.partnership += count;
+    }
+    committeeTotal = volunteerYes; 
+  } else {
+    committees.program = 25;
+    committees.tech = 22;
+    committees.marketing = 15;
+    committees.finance = 11;
+    committees.comms = 10;
+    committees.partnership = 7;
+    committeeTotal = 44;
+  }
+
+  ["total-applicants-1", "total-applicants-2", "total-applicants-4", "total-applicants-5", "total-applicants-6"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = total;
+  });
+
+  document.getElementById("stat-undergrad-percent").textContent = `${undergradTechPercent}%`;
+  document.getElementById("stat-undergrad-count").textContent = `${undergradTech} / ${total}`;
+  
+  document.getElementById("stat-geo-percent").textContent = `${mainCitiesPercent}%`;
+  document.getElementById("stat-geo-count").textContent = `${mainCitiesTotal} / ${total}`;
+  
+  document.getElementById("stat-frontend-count").textContent = frontend;
+  document.getElementById("stat-frontend-percent").textContent = `${frontendPercent}%`;
+  
+  document.getElementById("stat-volunteer-percent").textContent = `${volunteerPercent}%`;
+  document.getElementById("stat-volunteer-count").textContent = `${volunteerYes} / ${total}`;
+
+  document.getElementById("undergrad-count-2").textContent = undergradTech;
+  document.getElementById("bigstat-undergrad-count").textContent = `${undergradTech} / ${total}`;
+  document.getElementById("bigstat-undergrad-percent").textContent = `${undergradTechPercent}%`;
+  
+  document.getElementById("aff-professional").textContent = employedTech;
+  document.getElementById("aff-nontech").textContent = undergradNonTech;
+  document.getElementById("aff-freelancer").textContent = freelancer;
+  document.getElementById("aff-enthusiast").textContent = enthusiast;
+
+  const binanCount = apiData.cities ? (apiData.cities["City of Biñan"] || apiData.cities["Biñan"] || 7) : 7;
+  document.getElementById("geo-text").textContent = `Santa Rosa (${santaRosa}) and Cabuyao (${cabuyao}) together account for ${mainCitiesTotal} of ${total} applicants — over ${mainCitiesPercent}% of the cohort. Biñan (${binanCount}) is a clear third hub; everywhere else is thin.`;
+
+  document.getElementById("skill-mid-count").textContent = midLevelCount;
+  
+  let sum = (lvl1 * 1) + (lvl2 * 2) + (lvl3 * 3) + (lvl4 * 4) + (lvl5 * 5);
+  let average = (sum / total).toFixed(1);
+  document.getElementById("skill-text-body").textContent = `most applicants place themselves at an intermediate level (average rating: ${average} out of 5, with ${midLevelCount} of ${total} rating themselves 2 or 3) — solid ground for hands-on workshops and hackathons, not introductory "what is a variable" content. ${lvl5 > 0 ? lvl5 + ' applicant(s) rated themselves a 5.' : 'Nobody rated themselves a 5.'}`;
+
+  document.getElementById("volunteer-count-2").textContent = volunteerYes;
+  document.getElementById("volunteer-percent-2").textContent = `${volunteerPercent}%`;
+  document.getElementById("bigstat-volunteer-percent").textContent = `${volunteerPercent}%`;
+  document.getElementById("bigstat-volunteer-count").textContent = `${volunteerYes} / ${total}`;
+  document.getElementById("committee-total-count").textContent = committeeTotal;
+
+  initCharts({
+    composition: { undergradTech, employedTech, undergradNonTech, freelancer, enthusiast },
+    geo: { labels: geoLabels, values: geoValues },
+    interests: { frontend, backend, datascience, uiux, cybersecurity, mobile, cloud, projectmgmt, blockchain },
+    skills: { lvl1, lvl2, lvl3, lvl4, lvl5 },
+    motivations,
+    volunteer: { yes: volunteerYes, no: volunteerNo },
+    committees
+  });
+}
+
+async function loadLiveData() {
+  const url = 'https://script.google.com/macros/s/AKfycbz5PBtl7f6H-yaZmSrubfL3XUqb0oRM0NlMLpMvyAS8Ci_EEbWd88BuqGQKbZyHECsM/exec';
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Network response was not ok');
+    const data = await response.json();
+    processAndRender(data);
+  } catch (error) {
+    console.warn("Failed to load live data, falling back to static defaults:", error);
+    processAndRender({
+      totalApplicants: 60,
+      cities: {},
+      affiliations: {
+        "Undergraduate Tech Student (IT, CS, CpE, etc.)": 51,
+        "Employed Tech Professional (Software Engineer, QA, PM, UI/UX, etc.)": 5,
+        "Undergraduate Non-Tech Student": 2,
+        "Freelancer / Self-Employed Developer": 1,
+        "Tech Enthusiast / Career Switcher": 1
+      },
+      techStacks: {
+        "Frontend": 43,
+        "Backend": 36,
+        "Data Science": 32,
+        "UI/UX": 32,
+        "Cybersecurity": 24,
+        "Mobile": 22,
+        "Cloud": 20,
+        "Project": 19,
+        "Blockchain": 10
+      },
+      skillLevels: { "1": 2, "2": 20, "3": 27, "4": 11, "5": 0 },
+      volunteerInterest: { "Yes": 40, "No": 20 },
+      committees: null
+    });
+  }
+}
+
+loadLiveData();
 </script>
 
 </body>
