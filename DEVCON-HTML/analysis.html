@@ -769,15 +769,20 @@ function processAndRender(apiData) {
   document.getElementById("aff-enthusiast").textContent = enthusiast;
 
   const binanCount = apiData.cities ? (apiData.cities["City of Biñan"] || apiData.cities["Biñan"] || 7) : 7;
-  document.getElementById("geo-text").textContent = `Santa Rosa (${santaRosa}) and Cabuyao (${cabuyao}) together account for ${mainCitiesTotal} of ${total} applicants — over ${mainCitiesPercent}% of the cohort. Biñan (${binanCount}) is a clear third hub; everywhere else is thin.`;
+  const geoTextEl = document.getElementById("geo-text");
+  if (geoTextEl) {
+    geoTextEl.textContent = `Santa Rosa (${santaRosa}) and Cabuyao (${cabuyao}) together account for ${mainCitiesTotal} of ${total} applicants — over ${mainCitiesPercent}% of the cohort. Biñan (${binanCount}) is a clear third hub; everywhere else is thin.`;
+  }
 
-  document.getElementById("skill-mid-count").textContent = midLevelCount;
-  
   let sum = (lvl1 * 1) + (lvl2 * 2) + (lvl3 * 3) + (lvl4 * 4) + (lvl5 * 5);
   let average = (sum / total).toFixed(1);
-  document.getElementById("skill-text-body").textContent = `most applicants place themselves at an intermediate level (average rating: ${average} out of 5, with ${midLevelCount} of ${total} rating themselves 2 or 3) — solid ground for hands-on workshops and hackathons, not introductory "what is a variable" content. ${lvl5 > 0 ? lvl5 + ' applicant(s) rated themselves a 5.' : 'Nobody rated themselves a 5.'}`;
+  const skillTextBodyEl = document.getElementById("skill-text-body");
+  if (skillTextBodyEl) {
+    skillTextBodyEl.textContent = `most applicants place themselves at an intermediate level (average rating: ${average} out of 5, with ${midLevelCount} of ${total} rating themselves 2 or 3) — solid ground for hands-on workshops and hackathons, not introductory "what is a variable" content. ${lvl5 > 0 ? lvl5 + ' applicant(s) rated themselves a 5.' : 'Nobody rated themselves a 5.'}`;
+  }
 
-  document.getElementById("volunteer-count-2").textContent = volunteerYes;
+  const volCount2El = document.getElementById("volunteer-count-2");
+  if (volCount2El) volCount2El.textContent = volunteerYes;
   document.getElementById("volunteer-percent-2").textContent = `${volunteerPercent}%`;
   document.getElementById("bigstat-volunteer-percent").textContent = `${volunteerPercent}%`;
   document.getElementById("bigstat-volunteer-count").textContent = `${volunteerYes} / ${total}`;
