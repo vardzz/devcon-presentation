@@ -269,8 +269,8 @@ function processAndRender(apiData) {
       const counts = sortedKws.map(k => k[1]);
       const maxCount = Math.max(...counts);
       const minCount = Math.min(...counts);
-      const maxFs = 28; // Max font size in pixels
-      const minFs = 12; // Min font size in pixels
+      const maxFs = 25; // Sized down to pack tightly
+      const minFs = 11; // Sized down to pack tightly
 
       sortedKws.forEach(([kw, count]) => {
         const wordEl = document.createElement("span");
@@ -283,15 +283,15 @@ function processAndRender(apiData) {
         wordEl.style.fontSize = `${fs}px`;
         
         // Style and color words relative to their size
-        if (fs > 24) {
+        if (fs > 22) {
           wordEl.style.color = "var(--amber)";
           wordEl.style.fontWeight = "700";
           wordEl.style.textShadow = "0 0 12px rgba(245, 166, 35, 0.4)";
-        } else if (fs > 18) {
+        } else if (fs > 17) {
           wordEl.style.color = "var(--teal)";
           wordEl.style.fontWeight = "600";
           wordEl.style.textShadow = "0 0 8px rgba(79, 209, 197, 0.25)";
-        } else if (fs > 14) {
+        } else if (fs > 13) {
           wordEl.style.color = "var(--violet)";
           wordEl.style.fontWeight = "500";
         } else {
@@ -299,7 +299,8 @@ function processAndRender(apiData) {
           wordEl.style.opacity = "0.75";
         }
 
-        wordEl.style.margin = "5px 8px";
+        wordEl.style.margin = "2px 5px";
+        wordEl.style.lineHeight = "1";
         wordEl.style.display = "inline-block";
         wordEl.style.fontFamily = "'Space Grotesk', sans-serif";
         wordEl.style.transition = "transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease";
@@ -312,7 +313,7 @@ function processAndRender(apiData) {
         };
         wordEl.onmouseout = () => {
           wordEl.style.transform = "scale(1) translateY(0)";
-          wordEl.style.opacity = fs <= 14 ? "0.75" : "1";
+          wordEl.style.opacity = fs <= 13 ? "0.75" : "1";
         };
 
         wordEl.textContent = kw;

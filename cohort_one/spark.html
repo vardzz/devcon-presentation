@@ -133,12 +133,18 @@
         Keywords extracted and compiled in real-time from open-ended responses
       </div>
       <div class="grid-2" style="align-items: stretch; gap: 24px;">
-        <div style="position: relative; width: 100%; min-height: 260px; background: rgba(22, 29, 51, 0.4); border: 1px solid var(--line); border-radius: 12px; display: flex; justify-content: center; align-items: center; padding: 20px; overflow: hidden;">
-          <!-- SVG Cloud Background Graphic -->
-          <svg style="position: absolute; width: 85%; height: 85%; opacity: 0.12; color: var(--teal); pointer-events: none;" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3">
-            <path d="M 25,60 A 18,18 0 0,1 40,28 A 24,24 0 0,1 75,32 A 16,16 0 0,1 85,55 A 15,15 0 0,1 78,75 L 25,75 A 14,14 0 0,1 25,60 Z" />
+        <div style="position: relative; width: 100%; min-height: 280px; background: rgba(22, 29, 51, 0.4); border: 1px solid var(--line); border-radius: 12px; display: flex; justify-content: center; align-items: center; padding: 10px; overflow: hidden;">
+          <!-- SVG Cloud Background Graphic (Enlarged and Filled) -->
+          <svg style="position: absolute; width: 95%; height: 95%; opacity: 0.85; color: var(--teal); pointer-events: none;" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="rgba(79, 209, 197, 0.01)" />
+                <stop offset="100%" stop-color="rgba(124, 108, 240, 0.05)" />
+              </linearGradient>
+            </defs>
+            <path d="M 20,65 A 15,15 0 0,1 32,32 A 22,22 0 0,1 70,30 A 16,16 0 0,1 86,52 A 14,14 0 0,1 78,76 L 22,76 A 14,14 0 0,1 20,65 Z" fill="url(#cloudGrad)" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3" style="opacity: 0.22;" />
           </svg>
-          <div id="learnKeywordsList" style="position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; text-align: center; gap: 6px; max-width: 95%;">
+          <div id="learnKeywordsList" style="position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; text-align: center; gap: 3px 6px; max-width: 320px; padding: 20px 10px;">
             <span style="color:var(--muted); font-size:13px;">Analyzing topics...</span>
           </div>
         </div>
