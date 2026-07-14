@@ -266,8 +266,8 @@ function processAndRender(apiData) {
       
     if (sortedKws.length > 0) {
       // Ensure canvas matches its render box dimensions
-      canvasEl.width = canvasEl.offsetWidth || 340;
-      canvasEl.height = canvasEl.offsetHeight || 260;
+      canvasEl.width = canvasEl.offsetWidth || 900;
+      canvasEl.height = canvasEl.offsetHeight || 350;
 
       const counts = sortedKws.map(k => k[1]);
       const maxCount = Math.max(...counts);
@@ -280,9 +280,9 @@ function processAndRender(apiData) {
         list: wordList,
         gridSize: 5, // Tighter packing
         weightFactor: function (size) {
-          if (maxCount === minCount) return 14;
-          // Scale dynamically: biggest word = 48px, smallest = 10px
-          return 10 + ((size - minCount) / (maxCount - minCount)) * 38;
+          if (maxCount === minCount) return 16;
+          // Scale dynamically: biggest word = 56px, smallest = 12px
+          return 12 + ((size - minCount) / (maxCount - minCount)) * 44;
         },
         fontFamily: "'Space Grotesk', sans-serif",
         fontWeight: 'bold',
