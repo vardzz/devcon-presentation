@@ -262,7 +262,7 @@ function processAndRender(apiData) {
 
     const sortedKws = Object.entries(cleanedKws)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 35); // Limit to top 35 keywords so the cloud shape is completely filled
+      .slice(0, 75); // Limit to top 75 keywords to fill the larger canvas space
       
     if (sortedKws.length > 0) {
       // Ensure canvas matches its render box dimensions
@@ -297,7 +297,7 @@ function processAndRender(apiData) {
         rotationSteps: 2, // 0 and 90 degrees
         backgroundColor: 'transparent',
         shape: 'circle',
-        ellipticity: 0.55 // Squashes it horizontally to map to the cloud shape
+        ellipticity: 0.45 // Spreads the word cloud wider to fill horizontal gaps
       });
       
       // Dynamic sophisticated summary
