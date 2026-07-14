@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DEVCON Laguna — Cohort 1 Report</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="spark.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header class="header">
+    <img src="devcon.png" alt="DEVCON Laguna Chapter Banner" class="header-logo">
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="status-line mono">
+      <span class="dot" id="liveDot"></span>
+      <span id="liveStatusText">Connecting…</span>
+      <button class="refresh-btn" id="refreshBtn">⟳ Refresh</button>
+    </div>
+    <h1 class="display">DEVCON Laguna is being built by students, in Santa Rosa and Cabuyao, and they want to run it themselves.</h1>
+    <p class="sub">A live read of <span id="total-applicants-1">–</span> Cohort 1 applications: who's applying, what they want to learn, and who's ready to organize.</p>
+
+    <div class="hero-stats mono">
+      <div class="hero-stat">
+        <div class="num-wrapper">
+          <div class="num main-val" id="stat-undergrad-percent">–</div>
+          <div class="num hover-val" id="stat-undergrad-count">–</div>
+        </div>
+        <div class="lbl">Undergrad tech students</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num-wrapper">
+          <div class="num main-val" id="stat-geo-percent">–</div>
+          <div class="num hover-val" id="stat-geo-count">–</div>
+        </div>
+        <div class="lbl">From Santa Rosa + Cabuyao</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num-wrapper">
+          <div class="num main-val" id="stat-frontend-count">–</div>
+          <div class="num hover-val" id="stat-frontend-percent">–</div>
+        </div>
+        <div class="lbl">Interested in Frontend Dev</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num-wrapper">
+          <div class="num main-val" id="stat-volunteer-percent">–</div>
+          <div class="num hover-val" id="stat-volunteer-count">–</div>
+        </div>
+        <div class="lbl">Want a volunteer role</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 COMPOSITION -->
+  <section>
+    <div class="eyebrow">[ 01 // Composition ]</div>
+    <h2>A student-driven applicant base</h2>
+    <p class="section-intro"><span id="undergrad-count-2">–</span> of <span id="total-applicants-2">–</span> applicants are undergraduate tech students (IT, CS, CpE and related programs) — the community will lean energetic, learning-first, and hungry for a bridge from classroom to industry.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Applicant background</h3>
+        <div class="card-note">Current primary affiliation, all <span id="total-applicants-6">–</span> applicants</div>
+        <div class="chart-box"><canvas id="chartComposition"></canvas></div>
+      </div>
+      <div class="card callout">
+        <div class="big-stat-wrapper">
+          <div class="big-stat main-val" id="bigstat-undergrad-count">–</div>
+          <div class="big-stat hover-val" id="bigstat-undergrad-percent">–</div>
+        </div>
+        <p>are current undergraduate tech students. The rest: <span id="aff-professional">–</span> employed tech professionals, <span id="aff-nontech">–</span> undergrad non-tech students, <span id="aff-freelancer">–</span> freelancer/self-employed developer, and <span id="aff-enthusiast">–</span> tech enthusiast/career switcher.</p>
+        <div class="insight-card">
+          <strong>Read:</strong> program design should assume most attendees are still in school — think academic-term scheduling, campus partnerships, and content that bridges coursework to real jobs.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 GEOGRAPHY -->
+  <section>
+    <div class="eyebrow">[ 02 // Geography ]</div>
+    <h2>Two cities, one clear starting point</h2>
+    <p class="section-intro" id="geo-text">Loading geographic breakdown…</p>
+
+    <div class="card">
+      <h3>Applicants by city/municipality</h3>
+      <div class="card-note">Primary city of residence, study, or work in Laguna</div>
+      <div class="chart-box xtall"><canvas id="chartGeo"></canvas></div>
+    </div>
+    <div class="insight-card" style="margin-top:20px;">
+      <strong>Read:</strong> anchor the first wave of meetups and campus partnerships in Santa Rosa and Cabuyao to maximize turnout, treat Biñan as the next logical hub, then expand toward Calamba and San Pedro as the community matures.
+    </div>
+  </section>
+
+  <!-- 03 INTERESTS -->
+  <section>
+    <div class="eyebrow">[ 03 // Technical Interests ]</div>
+    <h2>Full-stack web leads, with real depth beyond it</h2>
+    <p class="section-intro">Applicants could select multiple areas of interest, so figures reflect total demand across the pool, not exclusive preferences.</p>
+
+    <div class="card">
+      <h3>Interest by technical area</h3>
+      <div class="card-note">Core technical stack / track / areas of deep interest, multi-select</div>
+      <div class="chart-box xtall"><canvas id="chartInterests"></canvas></div>
+    </div>
+
+    <div class="grid-2" style="margin-top:20px;">
+      <div class="card">
+        <h3>Self-rated skill level</h3>
+        <div class="card-note">1 = beginner, 5 = advanced</div>
+        <div class="chart-box"><canvas id="chartSkill"></canvas></div>
+      </div>
+      <div class="card callout">
+        <div class="insight-card">
+          <strong id="skill-text-header">Read:</strong> <span id="skill-text-body">Loading skill distribution…</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card highlight-card" style="margin-top:20px; border-left: 4px solid var(--teal); background: linear-gradient(135deg, var(--panel) 0%, rgba(22, 29, 51, 0.7) 100%); box-shadow: 0 8px 32px rgba(79,209,197,0.05);">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+        <span class="dot live" style="width: 8px; height: 8px;"></span>
+        <h3 style="color: var(--teal); font-family: 'Space Grotesk', sans-serif;">Most Requested Topics & Technologies</h3>
+      </div>
+      <div class="card-note" style="color: var(--muted); font-size: 12.5px; margin-bottom: 18px;">
+        Keywords extracted and compiled in real-time from open-ended responses
+      </div>
+      <div class="grid-2" style="align-items: stretch; gap: 24px;">
+        <div class="taglist" id="learnKeywordsList" style="margin-top: 0; align-content: flex-start;">
+          <span style="color:var(--muted); font-size:13px;">Analyzing topics...</span>
+        </div>
+        <div class="insight-card" style="border-left: 3px solid var(--teal); background: rgba(79,209,197,0.03); margin-top: 0; display: flex; align-items: center;">
+          <p style="font-size: 13.5px; line-height: 1.6; color: var(--paper);" id="learnSummaryText">
+            Loading summary...
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 MOTIVATION -->
+  <section>
+    <div class="eyebrow">[ 04 // Motivation ]</div>
+    <h2>Why they're actually joining</h2>
+    <p class="section-intro">Networking and upskilling dominate; open-source/civic tech and hackathons are present but secondary. Multi-select, out of <span id="total-applicants-4">–</span> applicants.</p>
+
+    <div class="card">
+      <h3>Primary motivation for applying</h3>
+      <div class="chart-box tall"><canvas id="chartMotivation"></canvas></div>
+      <div class="insight-card" style="margin-top:16px;">
+        <strong>Read:</strong> lead with networking and structured upskilling in how the community is marketed and programmed — that's what pulled people in. Hackathons and civic-tech/open-source work make strong recurring features, not the headline pitch.
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 VOLUNTEERS -->
+  <section>
+    <div class="eyebrow">[ 05 // Organizing Capacity ]</div>
+    <h2>A ready-made core team, unevenly distributed</h2>
+    <p class="section-intro"><span id="volunteer-count-2">–</span> of <span id="total-applicants-5">–</span> applicants (<span id="volunteer-percent-2">–</span>) want an active volunteer or committee role rather than passive membership. Interest concentrates in event operations and technical work.</p>
+
+    <div class="grid-2">
+      <div class="card callout">
+        <div class="big-stat-wrapper">
+          <div class="big-stat main-val" id="bigstat-volunteer-percent">–</div>
+          <div class="big-stat hover-val" id="bigstat-volunteer-count">–</div>
+        </div>
+        <p>of applicants want to actively join lead roles in DEVCON Laguna.</p>
+      </div>
+      <div class="card">
+        <h3>Volunteer intent</h3>
+        <div class="chart-box"><canvas id="chartVolunteer"></canvas></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3>Volunteer preference by committee</h3>
+      <div class="card-note">Multi-select, among the <span id="committee-total-count">–</span> applicants who named a committee preference</div>
+      <div class="chart-box tall"><canvas id="chartCommittee"></canvas></div>
+      <div class="insight-card" style="margin-top:16px;">
+        <strong>Read:</strong> Program Operations and Technical committees can be staffed immediately. Internal/External Communications and Partnership & Fundraising are the gaps — worth direct recruitment or mentorship rather than waiting for organic interest.
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 CAMPAIGN IMPACT -->
+  <section style="border-bottom:none; padding-bottom: 24px;">
+    <div class="eyebrow">[ 06 // Campaign Impact ]</div>
+    <h2>Promotional Video Launch Success</h2>
+    <p class="section-intro">A comparison of cohort registrations before and after the DEVCON Laguna promotional video was launched on Facebook on July 12.</p>
+
+    <div class="grid-2">
+      <div class="card highlight-card" style="border-left: 4px solid var(--amber); background: linear-gradient(135deg, var(--panel) 0%, rgba(22, 29, 51, 0.7) 100%);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <span class="dot live" style="width: 8px; height: 8px; background: var(--amber); box-shadow: 0 0 8px var(--amber); animation: pulse 2s infinite;"></span>
+          <h3 style="color: var(--amber); font-family: 'Space Grotesk', sans-serif;">Facebook Launch Impact</h3>
+        </div>
+        <div class="card-note">Launch Date: July 12, 2026</div>
+        <p style="font-size: 14.5px; line-height: 1.6; color: var(--paper);">
+          Before the promotional video was posted, registration stood at <strong>48</strong> participants. Following the launch on our Facebook page, registrations surged to <strong id="campaign-total-count">62</strong>, gaining <strong id="campaign-new-text">14 new participants</strong> within 3 days.
+        </p>
+      </div>
+
+      <div class="card callout">
+        <div class="big-stat-wrapper">
+          <div class="big-stat main-val" style="color: var(--amber);" id="campaign-growth-rate">+29.2%</div>
+          <div class="big-stat hover-val" style="color: var(--teal);" id="campaign-new-count">+14 Applicants</div>
+        </div>
+        <p style="color: var(--muted); font-size: 14px;">
+          Growth in registration since the promotional video upload, representing a rapid acceleration of cohort interest.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mono">
+    DEVCON_LAGUNA | COHORT_01
+  </footer>
+</div>
+
+<script src="env.js"></script>
+<script src="spark.js"></script>
+</body>
+</html>
