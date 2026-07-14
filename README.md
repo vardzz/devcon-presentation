@@ -47,9 +47,8 @@ devcon-presentation/
 │   ├── spark.css         # Custom CSS (premium dark theme, typography, layout)
 │   ├── spark.js          # Core execution logic, Chart.js configs, and polling loop
 │   ├── env.js            # Local environment config (git-ignored)
-│   ├── env.example.js    # Environment template for developers
+│   ├── devcon.png        # Banner image
 │   └── .gitignore        # Local folder rules (excludes env.js)
-├── devcon.png            # Banner image
 └── README.md             # Project documentation and roadmap
 ```
 
@@ -65,4 +64,4 @@ As DEVCON Laguna grows, we will scale our analytics toolchain:
 
 ---
 
-_Created by the DEVCON Laguna Chapter Membership Team._
+_Created by the DEVCON Laguna Chapter | Membership and Operations Department_
