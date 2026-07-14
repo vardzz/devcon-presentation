@@ -263,7 +263,7 @@ function processAndRender(apiData) {
 
     const sortedKws = Object.entries(cleanedKws)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 75); // Limit to top 75 keywords to fill the larger canvas space
+      .slice(0, 110); // Limit to top 110 keywords to completely fill all remaining empty spaces
       
     if (sortedKws.length > 0) {
       const counts = sortedKws.map(k => k[1]);
