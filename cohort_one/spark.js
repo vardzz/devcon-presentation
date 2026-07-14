@@ -262,7 +262,7 @@ function processAndRender(apiData) {
 
     const sortedKws = Object.entries(cleanedKws)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 25); // Limit to top 25 keywords so the cloud shape remains visible
+      .slice(0, 35); // Limit to top 35 keywords so the cloud shape is completely filled
       
     if (sortedKws.length > 0) {
       // Ensure canvas matches its render box dimensions
@@ -278,11 +278,11 @@ function processAndRender(apiData) {
       // Call WordCloud2 engine
       WordCloud(canvasEl, {
         list: wordList,
-        gridSize: 10,
+        gridSize: 5, // Tighter packing
         weightFactor: function (size) {
           if (maxCount === minCount) return 14;
-          // Scale dynamically: biggest word = 32px, smallest = 11px
-          return 11 + ((size - minCount) / (maxCount - minCount)) * 21;
+          // Scale dynamically: biggest word = 48px, smallest = 10px
+          return 10 + ((size - minCount) / (maxCount - minCount)) * 38;
         },
         fontFamily: "'Space Grotesk', sans-serif",
         fontWeight: 'bold',
@@ -291,16 +291,16 @@ function processAndRender(apiData) {
           if (maxCount !== minCount) {
             relativeVal = (weight - minCount) / (maxCount - minCount);
           }
-          if (relativeVal > 0.7) return '#F5A623'; // Amber
-          if (relativeVal > 0.4) return '#4FD1C5'; // Teal
-          if (relativeVal > 0.15) return '#7C6CF0'; // Violet
+          if (relativeVal > 0.7) return '#F5A623'; // Amber (Most requested)
+          if (relativeVal > 0.4) return '#4FD1C5'; // Teal (Secondary)
+          if (relativeVal > 0.15) return '#7C6CF0'; // Violet (Low frequency)
           return '#EDEFF5'; // Off-white
         },
-        rotateRatio: 0.35, // 35% vertical orientation
+        rotateRatio: 0.18, // Mostly horizontal to mimic the cloud's flat/wide shape
         rotationSteps: 2, // 0 and 90 degrees
         backgroundColor: 'transparent',
         shape: 'circle',
-        ellipticity: 0.65
+        ellipticity: 0.55 // Squashes it horizontally to map to the cloud shape
       });
       
       // Dynamic sophisticated summary
