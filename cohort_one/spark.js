@@ -222,11 +222,10 @@ function processAndRender(apiData) {
     `most applicants place themselves at an intermediate level (average rating: ${avg} out of 5, with ${midLevelCount} of ${total} rating themselves 2 or 3) — solid ground for hands-on workshops and hackathons, not introductory "what is a variable" content. ${lvl5 > 0 ? lvl5 + ' applicant(s) rated themselves a 5.' : 'Nobody rated themselves a 5.'}`;
 
   // --- render learn keywords (open-ended question) ---
-  const kwContainer = document.getElementById("learnKeywordsList");
+  const canvasEl = document.getElementById("canvasWordCloud");
   const summaryTextEl = document.getElementById("learnSummaryText");
   
-  if (kwContainer) {
-    kwContainer.innerHTML = "";
+  if (canvasEl) {
     const kwData = apiData.learnKeywords || {};
     
     // Non-subject words to filter out
@@ -251,7 +250,7 @@ function processAndRender(apiData) {
       if (cleanKw === 'ui' || cleanKw === 'ux' || cleanKw === 'uiux') {
         normalized = 'ui/ux';
       } else if (cleanKw === 'ml' || cleanKw === 'machine' || cleanKw === 'learning' || cleanKw === 'ai') {
-        normalized = 'ai / machine learning';
+        normalized = 'ai / ML';
       } else if (cleanKw === 'js' || cleanKw === 'javascript') {
         normalized = 'javascript';
       } else if (cleanKw === 'ts' || cleanKw === 'typescript') {
@@ -263,62 +262,45 @@ function processAndRender(apiData) {
 
     const sortedKws = Object.entries(cleanedKws)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 12); // Show top 12 keywords
+      .slice(0, 25); // Limit to top 25 keywords so the cloud shape remains visible
       
     if (sortedKws.length > 0) {
+      // Ensure canvas matches its render box dimensions
+      canvasEl.width = canvasEl.offsetWidth || 340;
+      canvasEl.height = canvasEl.offsetHeight || 260;
+
       const counts = sortedKws.map(k => k[1]);
       const maxCount = Math.max(...counts);
       const minCount = Math.min(...counts);
-      const maxFs = 25; // Sized down to pack tightly
-      const minFs = 11; // Sized down to pack tightly
 
-      sortedKws.forEach(([kw, count]) => {
-        const wordEl = document.createElement("span");
-        
-        // Calculate font size relative to frequency
-        let fs = minFs;
-        if (maxCount !== minCount) {
-          fs = minFs + ((count - minCount) / (maxCount - minCount)) * (maxFs - minFs);
-        }
-        wordEl.style.fontSize = `${fs}px`;
-        
-        // Style and color words relative to their size
-        if (fs > 22) {
-          wordEl.style.color = "var(--amber)";
-          wordEl.style.fontWeight = "700";
-          wordEl.style.textShadow = "0 0 12px rgba(245, 166, 35, 0.4)";
-        } else if (fs > 17) {
-          wordEl.style.color = "var(--teal)";
-          wordEl.style.fontWeight = "600";
-          wordEl.style.textShadow = "0 0 8px rgba(79, 209, 197, 0.25)";
-        } else if (fs > 13) {
-          wordEl.style.color = "var(--violet)";
-          wordEl.style.fontWeight = "500";
-        } else {
-          wordEl.style.color = "var(--paper)";
-          wordEl.style.opacity = "0.75";
-        }
+      const wordList = sortedKws.map(([kw, count]) => [kw, count]);
 
-        wordEl.style.margin = "2px 5px";
-        wordEl.style.lineHeight = "1";
-        wordEl.style.display = "inline-block";
-        wordEl.style.fontFamily = "'Space Grotesk', sans-serif";
-        wordEl.style.transition = "transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease";
-        wordEl.style.cursor = "default";
-        
-        // Add smooth hover transformations
-        wordEl.onmouseover = () => {
-          wordEl.style.transform = "scale(1.2) translateY(-2px)";
-          wordEl.style.opacity = "1";
-        };
-        wordEl.onmouseout = () => {
-          wordEl.style.transform = "scale(1) translateY(0)";
-          wordEl.style.opacity = fs <= 13 ? "0.75" : "1";
-        };
-
-        wordEl.textContent = kw;
-        wordEl.title = `${count} responses`;
-        kwContainer.appendChild(wordEl);
+      // Call WordCloud2 engine
+      WordCloud(canvasEl, {
+        list: wordList,
+        gridSize: 10,
+        weightFactor: function (size) {
+          if (maxCount === minCount) return 14;
+          // Scale dynamically: biggest word = 32px, smallest = 11px
+          return 11 + ((size - minCount) / (maxCount - minCount)) * 21;
+        },
+        fontFamily: "'Space Grotesk', sans-serif",
+        fontWeight: 'bold',
+        color: function (word, weight) {
+          let relativeVal = 0;
+          if (maxCount !== minCount) {
+            relativeVal = (weight - minCount) / (maxCount - minCount);
+          }
+          if (relativeVal > 0.7) return '#F5A623'; // Amber
+          if (relativeVal > 0.4) return '#4FD1C5'; // Teal
+          if (relativeVal > 0.15) return '#7C6CF0'; // Violet
+          return '#EDEFF5'; // Off-white
+        },
+        rotateRatio: 0.35, // 35% vertical orientation
+        rotationSteps: 2, // 0 and 90 degrees
+        backgroundColor: 'transparent',
+        shape: 'circle',
+        ellipticity: 0.65
       });
       
       // Dynamic sophisticated summary
@@ -327,7 +309,8 @@ function processAndRender(apiData) {
         summaryTextEl.innerHTML = `Our cohort shows an overwhelming drive to build and learn in the domains of ${top3.join(', ')}. We should structure our upcoming DEVCON Laguna workshops and civic tech hackathons around these core fields.`;
       }
     } else {
-      kwContainer.innerHTML = `<span style="color:var(--muted); font-size:13px;">No topic responses found yet.</span>`;
+      const ctx = canvasEl.getContext('2d');
+      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
       if (summaryTextEl) summaryTextEl.textContent = "Waiting for live applicant responses to compile topics.";
     }
   }
