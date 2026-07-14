@@ -287,14 +287,11 @@ function processAndRender(apiData) {
         fontFamily: "'Space Grotesk', sans-serif",
         fontWeight: 'bold',
         color: function (word, weight) {
-          let relativeVal = 0;
-          if (maxCount !== minCount) {
-            relativeVal = (weight - minCount) / (maxCount - minCount);
-          }
-          if (relativeVal > 0.7) return '#F5A623'; // Amber (Most requested)
-          if (relativeVal > 0.4) return '#4FD1C5'; // Teal (Secondary)
-          if (relativeVal > 0.15) return '#7C6CF0'; // Violet (Low frequency)
-          return '#EDEFF5'; // Off-white
+          const w = word.toLowerCase().trim();
+          if (w === 'ui/ux') return '#F5A623'; // Amber
+          if (w === 'ai / ml' || w === 'ai/ml' || w === 'ai' || w === 'ml') return '#4FD1C5'; // Teal
+          if (w === 'cybersecurity') return '#7C6CF0'; // Violet
+          return '#EDEFF5'; // White
         },
         rotateRatio: 0.18, // Mostly horizontal to mimic the cloud's flat/wide shape
         rotationSteps: 2, // 0 and 90 degrees
