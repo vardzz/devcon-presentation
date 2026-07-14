@@ -297,7 +297,23 @@ function processAndRender(apiData) {
         rotationSteps: 2, // 0 and 90 degrees
         backgroundColor: 'transparent',
         shape: 'circle',
-        ellipticity: 0.45 // Spreads the word cloud wider to fill horizontal gaps
+        ellipticity: 0.45, // Spreads the word cloud wider to fill horizontal gaps
+        hover: function (item, dimension, event) {
+          const tooltip = document.getElementById('wordcloud-tooltip');
+          if (!tooltip) return;
+          if (item) {
+            const [word, count] = item;
+            const w = word.toLowerCase().trim();
+            if (w === 'ui/ux' || w === 'ai / ml' || w === 'ai/ml' || w === 'ai' || w === 'ml' || w === 'cybersecurity') {
+              tooltip.innerHTML = `<strong>${word.toUpperCase()}</strong>: ${count} applicants`;
+              tooltip.style.left = (event.pageX + 15) + 'px';
+              tooltip.style.top = (event.pageY + 15) + 'px';
+              tooltip.style.display = 'block';
+              return;
+            }
+          }
+          tooltip.style.display = 'none';
+        }
       });
       
       // Dynamic sophisticated summary
