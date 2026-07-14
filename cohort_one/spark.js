@@ -342,7 +342,14 @@ async function loadLiveData(isManual) {
   // Cache-busting: append timestamp to query params to bypass browser caching of 302 redirects
   const params = new URLSearchParams({ t: Date.now().toString() });
   if (isManual) params.set('nocache', '1');
-  const requestUrl = `${ENV.SHEET_API_URL}?${params.toString()}`;
+
+  // Fallback if env.js is missing (e.g. on GitHub Pages)
+  let apiUrl = 'https://script.google.com/macros/s/AKfycbzatUDjVRI4nEr7-Tlr4dxqxDqsTsVgwa0_qsc5trg8R24ZlTmPolZdniXUJoaOh5jf/exec';
+  if (typeof ENV !== 'undefined' && ENV.SHEET_API_URL) {
+    apiUrl = ENV.SHEET_API_URL;
+  }
+
+  const requestUrl = `${apiUrl}?${params.toString()}`;
 
   try {
     const res = await fetch(requestUrl, { cache: 'no-store' });
