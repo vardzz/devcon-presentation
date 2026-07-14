@@ -132,5 +132,31 @@ h2{ font-family:'Space Grotesk', sans-serif; font-size:clamp(22px,3vw,30px); fon
   border-color:rgba(79,209,197,0.4);
 }
 
+.glow-amber {
+  text-shadow: 0 0 16px rgba(245, 166, 35, 0.7), 0 0 32px rgba(245, 166, 35, 0.4) !important;
+  animation: pulse-glow-amber 2.5s infinite alternate;
+}
+.glow-teal {
+  text-shadow: 0 0 16px rgba(79, 209, 197, 0.7), 0 0 32px rgba(79, 209, 197, 0.4) !important;
+  animation: pulse-glow-teal 2.5s infinite alternate;
+}
+.glow-violet {
+  text-shadow: 0 0 16px rgba(124, 108, 240, 0.7), 0 0 32px rgba(124, 108, 240, 0.4) !important;
+  animation: pulse-glow-violet 2.5s infinite alternate;
+}
+
+@keyframes pulse-glow-amber {
+  0% { text-shadow: 0 0 10px rgba(245, 166, 35, 0.5), 0 0 20px rgba(245, 166, 35, 0.2); }
+  100% { text-shadow: 0 0 20px rgba(245, 166, 35, 0.9), 0 0 40px rgba(245, 166, 35, 0.6); }
+}
+@keyframes pulse-glow-teal {
+  0% { text-shadow: 0 0 10px rgba(79, 209, 197, 0.5), 0 0 20px rgba(79, 209, 197, 0.2); }
+  100% { text-shadow: 0 0 20px rgba(79, 209, 197, 0.9), 0 0 40px rgba(79, 209, 197, 0.6); }
+}
+@keyframes pulse-glow-violet {
+  0% { text-shadow: 0 0 10px rgba(124, 108, 240, 0.5), 0 0 20px rgba(124, 108, 240, 0.2); }
+  100% { text-shadow: 0 0 20px rgba(124, 108, 240, 0.9), 0 0 40px rgba(124, 108, 240, 0.6); }
+}
+
 footer{padding:36px 0 60px; text-align:center; color:var(--muted); font-size:12.5px;}
 footer .mono{color:#5d6688;}

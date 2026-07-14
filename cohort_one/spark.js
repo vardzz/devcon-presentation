@@ -222,10 +222,11 @@ function processAndRender(apiData) {
     `most applicants place themselves at an intermediate level (average rating: ${avg} out of 5, with ${midLevelCount} of ${total} rating themselves 2 or 3) — solid ground for hands-on workshops and hackathons, not introductory "what is a variable" content. ${lvl5 > 0 ? lvl5 + ' applicant(s) rated themselves a 5.' : 'Nobody rated themselves a 5.'}`;
 
   // --- render learn keywords (open-ended question) ---
-  const canvasEl = document.getElementById("canvasWordCloud");
+  const divEl = document.getElementById("divWordCloud");
   const summaryTextEl = document.getElementById("learnSummaryText");
   
-  if (canvasEl) {
+  if (divEl) {
+    divEl.innerHTML = ""; // Clear existing words
     const kwData = apiData.learnKeywords || {};
     
     // Non-subject words to filter out
@@ -265,18 +266,14 @@ function processAndRender(apiData) {
       .slice(0, 75); // Limit to top 75 keywords to fill the larger canvas space
       
     if (sortedKws.length > 0) {
-      // Ensure canvas matches its render box dimensions
-      canvasEl.width = canvasEl.offsetWidth || 900;
-      canvasEl.height = canvasEl.offsetHeight || 350;
-
       const counts = sortedKws.map(k => k[1]);
       const maxCount = Math.max(...counts);
       const minCount = Math.min(...counts);
 
       const wordList = sortedKws.map(([kw, count]) => [kw, count]);
 
-      // Call WordCloud2 engine
-      WordCloud(canvasEl, {
+      // Call WordCloud2 engine in DOM mode (target element is a div)
+      WordCloud(divEl, {
         list: wordList,
         gridSize: 5, // Tighter packing
         weightFactor: function (size) {
@@ -292,6 +289,13 @@ function processAndRender(apiData) {
           if (w === 'ai / ml' || w === 'ai/ml' || w === 'ai' || w === 'ml') return '#4FD1C5'; // Teal
           if (w === 'cybersecurity') return '#7C6CF0'; // Violet
           return '#EDEFF5'; // White
+        },
+        classes: function (word, weight) {
+          const w = word.toLowerCase().trim();
+          if (w === 'ui/ux') return 'glow-amber';
+          if (w === 'ai / ml' || w === 'ai/ml' || w === 'ai' || w === 'ml') return 'glow-teal';
+          if (w === 'cybersecurity') return 'glow-violet';
+          return '';
         },
         rotateRatio: 0.18, // Mostly horizontal to mimic the cloud's flat/wide shape
         rotationSteps: 2, // 0 and 90 degrees
@@ -322,8 +326,6 @@ function processAndRender(apiData) {
         summaryTextEl.innerHTML = `Our cohort shows an overwhelming drive to build and learn in the domains of ${top3.join(', ')}. We should structure our upcoming DEVCON Laguna workshops and civic tech hackathons around these core fields.`;
       }
     } else {
-      const ctx = canvasEl.getContext('2d');
-      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
       if (summaryTextEl) summaryTextEl.textContent = "Waiting for live applicant responses to compile topics.";
     }
   }
