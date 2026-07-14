@@ -1,4 +1,4 @@
-# DEVCON Laguna - Member Analytics Dashboard
+# DEVCON Laguna - Membership Analytics Dashboard
 
 This repository houses the live data visualization and analytics engine for DEVCON Laguna registrations. As the Membership Data Analyst, this project extracts actionable insights from applicant data in real-time to shape event operations, technical curriculum, and core community programming.
 
@@ -6,9 +6,10 @@ This repository houses the live data visualization and analytics engine for DEVC
 
 ## Project Overview: Cohort 1 (spark)
 
-The Cohort 1 dashboard (spark.html) is a lightweight, real-time analytics client built using Chart.js and styled with a custom dark-mode aesthetic. 
+The Cohort 1 dashboard (spark.html) is a lightweight, real-time analytics client built using Chart.js and styled with a custom dark-mode aesthetic.
 
 It tracks and visualizes:
+
 1. **Composition**: The ratio of undergraduate tech students, professionals, freelancers, and enthusiasts.
 2. **Geography**: Mapping key cities (e.g., Santa Rosa, Cabuyao, Biñan) to find cohort clusters.
 3. **Interests**: Technical areas of focus (Frontend, Backend, AI/ML, UI/UX, Cloud, etc.).
@@ -31,38 +32,9 @@ graph LR
 ```
 
 ### Privacy-First Design
-* **Zero PII Leaks**: The Google Apps Script acts as an aggregation layer. It calculates counts, percentages, and extracts keywords on the Google Sheets side. It never reads or returns participant names, email addresses, or phone numbers to the browser.
-* **Secret Management**: The Google Sheets URL is stored locally in `env.js`, which is ignored by Git via `.gitignore`. This prevents developer configurations from leaking online.
 
----
-
-## Setup & Local Development
-
-To run the Cohort 1 dashboard locally, follow these steps:
-
-### 1. Configure the Environment
-By default, the dashboard needs to know where to fetch your aggregated Google Sheets API data.
-
-1. Navigate to the `cohort_one` directory.
-2. Duplicate the template configuration file:
-   ```bash
-   cp env.example.js env.js
-   ```
-3. Open `env.js` in your editor and replace the placeholder URL with your live Google Apps Script web app URL:
-   ```javascript
-   const ENV = {
-     SHEET_API_URL: 'https://script.google.com/macros/s/YOUR_DEPLOYED_URL_HERE/exec'
-   };
-   ```
-
-### 2. Run the Dashboard
-Open `spark.html` directly in any web browser:
-* Double-click `spark.html` in your file explorer, or
-* Open it from your terminal:
-  ```bash
-  # Windows
-  start cohort_one/spark.html
-  ```
+- **Zero PII Leaks**: The Google Apps Script acts as an aggregation layer. It calculates counts, percentages, and extracts keywords on the Google Sheets side. It never reads or returns participant names, email addresses, or phone numbers to the browser.
+- **Secret Management**: The Google Sheets URL is stored locally in `env.js`, which is ignored by Git via `.gitignore`. This prevents developer configurations from leaking online.
 
 ---
 
@@ -86,9 +58,11 @@ devcon-presentation/
 ## Future Cohort Roadmap
 
 As DEVCON Laguna grows, we will scale our analytics toolchain:
-* **Cohort 2 Integration**: Modularize the data pipeline to support multi-cohort filtering and comparisons.
-* **Direct Database Integration**: Move from Google Sheets to a server-side database (PostgreSQL/Supabase) to support larger applicant pools.
-* **Civic Tech Matching**: Build an automated matching engine to connect volunteer applicants with local community projects based on their interests and skills.
+
+- **Cohort 2 Integration**: Modularize the data pipeline to support multi-cohort filtering and comparisons.
+- **Direct Database Integration**: Move from Google Sheets to a server-side database (PostgreSQL/Supabase) to support larger applicant pools.
+- **Civic Tech Matching**: Build an automated matching engine to connect volunteer applicants with local community projects based on their interests and skills.
 
 ---
-*Created by the DEVCON Laguna Chapter Membership Team.*
+
+_Created by the DEVCON Laguna Chapter Membership Team._
