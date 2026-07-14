@@ -297,8 +297,7 @@ function processAndRender(apiData) {
           if (w === 'cybersecurity') return 'glow-violet';
           return '';
         },
-        rotateRatio: 0.18, // Mostly horizontal to mimic the cloud's flat/wide shape
-        rotationSteps: 2, // 0 and 90 degrees
+        rotateRatio: 0, // Keep all words horizontal to preserve layout shape and legibility
         backgroundColor: 'transparent',
         shape: 'circle',
         ellipticity: 0.45, // Spreads the word cloud wider to fill horizontal gaps
