@@ -266,11 +266,58 @@ function processAndRender(apiData) {
       .slice(0, 12); // Show top 12 keywords
       
     if (sortedKws.length > 0) {
+      const counts = sortedKws.map(k => k[1]);
+      const maxCount = Math.max(...counts);
+      const minCount = Math.min(...counts);
+      const maxFs = 28; // Max font size in pixels
+      const minFs = 12; // Min font size in pixels
+
       sortedKws.forEach(([kw, count]) => {
-        const tag = document.createElement("span");
-        tag.className = "tag";
-        tag.textContent = `${kw} (${count})`;
-        kwContainer.appendChild(tag);
+        const wordEl = document.createElement("span");
+        
+        // Calculate font size relative to frequency
+        let fs = minFs;
+        if (maxCount !== minCount) {
+          fs = minFs + ((count - minCount) / (maxCount - minCount)) * (maxFs - minFs);
+        }
+        wordEl.style.fontSize = `${fs}px`;
+        
+        // Style and color words relative to their size
+        if (fs > 24) {
+          wordEl.style.color = "var(--amber)";
+          wordEl.style.fontWeight = "700";
+          wordEl.style.textShadow = "0 0 12px rgba(245, 166, 35, 0.4)";
+        } else if (fs > 18) {
+          wordEl.style.color = "var(--teal)";
+          wordEl.style.fontWeight = "600";
+          wordEl.style.textShadow = "0 0 8px rgba(79, 209, 197, 0.25)";
+        } else if (fs > 14) {
+          wordEl.style.color = "var(--violet)";
+          wordEl.style.fontWeight = "500";
+        } else {
+          wordEl.style.color = "var(--paper)";
+          wordEl.style.opacity = "0.75";
+        }
+
+        wordEl.style.margin = "5px 8px";
+        wordEl.style.display = "inline-block";
+        wordEl.style.fontFamily = "'Space Grotesk', sans-serif";
+        wordEl.style.transition = "transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease";
+        wordEl.style.cursor = "default";
+        
+        // Add smooth hover transformations
+        wordEl.onmouseover = () => {
+          wordEl.style.transform = "scale(1.2) translateY(-2px)";
+          wordEl.style.opacity = "1";
+        };
+        wordEl.onmouseout = () => {
+          wordEl.style.transform = "scale(1) translateY(0)";
+          wordEl.style.opacity = fs <= 14 ? "0.75" : "1";
+        };
+
+        wordEl.textContent = kw;
+        wordEl.title = `${count} responses`;
+        kwContainer.appendChild(wordEl);
       });
       
       // Dynamic sophisticated summary

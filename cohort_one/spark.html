@@ -133,8 +133,14 @@
         Keywords extracted and compiled in real-time from open-ended responses
       </div>
       <div class="grid-2" style="align-items: stretch; gap: 24px;">
-        <div class="taglist" id="learnKeywordsList" style="margin-top: 0; align-content: flex-start;">
-          <span style="color:var(--muted); font-size:13px;">Analyzing topics...</span>
+        <div style="position: relative; width: 100%; min-height: 260px; background: rgba(22, 29, 51, 0.4); border: 1px solid var(--line); border-radius: 12px; display: flex; justify-content: center; align-items: center; padding: 20px; overflow: hidden;">
+          <!-- SVG Cloud Background Graphic -->
+          <svg style="position: absolute; width: 85%; height: 85%; opacity: 0.12; color: var(--teal); pointer-events: none;" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3">
+            <path d="M 25,60 A 18,18 0 0,1 40,28 A 24,24 0 0,1 75,32 A 16,16 0 0,1 85,55 A 15,15 0 0,1 78,75 L 25,75 A 14,14 0 0,1 25,60 Z" />
+          </svg>
+          <div id="learnKeywordsList" style="position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; text-align: center; gap: 6px; max-width: 95%;">
+            <span style="color:var(--muted); font-size:13px;">Analyzing topics...</span>
+          </div>
         </div>
         <div class="insight-card" style="border-left: 3px solid var(--teal); background: rgba(79,209,197,0.03); margin-top: 0; display: flex; align-items: center;">
           <p style="font-size: 13.5px; line-height: 1.6; color: var(--paper);" id="learnSummaryText">
