@@ -261,11 +261,23 @@
       </div>
     </div>
 
-    <div class="card" style="margin-top:20px;">
-      <h3>Top requested tools & technologies</h3>
-      <div class="card-note">Keywords extracted from open-ended "dying to learn" responses</div>
-      <div class="taglist" id="learnKeywordsList">
-        <span style="color:var(--muted); font-size:13px;">Analyzing topics...</span>
+    <div class="card highlight-card" style="margin-top:20px; border-left: 4px solid var(--teal); background: linear-gradient(135deg, var(--panel) 0%, rgba(22, 29, 51, 0.7) 100%); box-shadow: 0 8px 32px rgba(79,209,197,0.05);">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+        <span class="dot live" style="width: 8px; height: 8px;"></span>
+        <h3 style="color: var(--teal); font-family: 'Space Grotesk', sans-serif;">Most Requested Topics & Technologies</h3>
+      </div>
+      <div class="card-note" style="color: var(--muted); font-size: 12.5px; margin-bottom: 18px;">
+        Keywords extracted and compiled in real-time from open-ended responses
+      </div>
+      <div class="grid-2" style="align-items: stretch; gap: 24px;">
+        <div class="taglist" id="learnKeywordsList" style="margin-top: 0; align-content: flex-start;">
+          <span style="color:var(--muted); font-size:13px;">Analyzing topics...</span>
+        </div>
+        <div class="insight-card" style="border-left: 3px solid var(--teal); background: rgba(79,209,197,0.03); margin-top: 0; display: flex; align-items: center;">
+          <p style="font-size: 13.5px; line-height: 1.6; color: var(--paper);" id="learnSummaryText">
+            Loading summary...
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -549,12 +561,45 @@ function processAndRender(apiData) {
 
   // --- render learn keywords (open-ended question) ---
   const kwContainer = document.getElementById("learnKeywordsList");
+  const summaryTextEl = document.getElementById("learnSummaryText");
+  
   if (kwContainer) {
     kwContainer.innerHTML = "";
     const kwData = apiData.learnKeywords || {};
-    const sortedKws = Object.entries(kwData)
+    
+    // Non-subject words to filter out
+    const ignoreWords = [
+      "i'm", "also", "development", "web", "analysis", "i", "want", "learn", "build", 
+      "using", "topic", "tool", "framework", "technology", "topics", "tools", 
+      "frameworks", "technologies", "would", "like", "use", "create", "make", "some", 
+      "more", "how", "knowledge", "skills", "skill", "projects", "project", "things", 
+      "etc", "something", "anything", "anyone", "any", "study", "work", "laguna", "cohort",
+      "application", "applications", "participant", "participants", "about", "with"
+    ];
+
+    const cleanedKws = {};
+    for (const [kw, count] of Object.entries(kwData)) {
+      const cleanKw = kw.toLowerCase().trim();
+      if (ignoreWords.includes(cleanKw) || cleanKw.length <= 1) continue;
+      
+      // Merge synonyms to make the summary clean
+      let normalized = cleanKw;
+      if (cleanKw === 'ui' || cleanKw === 'ux' || cleanKw === 'uiux') {
+        normalized = 'ui/ux';
+      } else if (cleanKw === 'ml' || cleanKw === 'machine' || cleanKw === 'learning' || cleanKw === 'ai') {
+        normalized = 'ai / machine learning';
+      } else if (cleanKw === 'js' || cleanKw === 'javascript') {
+        normalized = 'javascript';
+      } else if (cleanKw === 'ts' || cleanKw === 'typescript') {
+        normalized = 'typescript';
+      }
+      
+      cleanedKws[normalized] = (cleanedKws[normalized] || 0) + count;
+    }
+
+    const sortedKws = Object.entries(cleanedKws)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 15); // Show top 15 keywords
+      .slice(0, 12); // Show top 12 keywords
       
     if (sortedKws.length > 0) {
       sortedKws.forEach(([kw, count]) => {
@@ -563,8 +608,15 @@ function processAndRender(apiData) {
         tag.textContent = `${kw} (${count})`;
         kwContainer.appendChild(tag);
       });
+      
+      // Dynamic sophisticated summary
+      if (summaryTextEl) {
+        const top3 = sortedKws.slice(0, 3).map(k => `<strong>${k[0].toUpperCase()}</strong>`);
+        summaryTextEl.innerHTML = `Our cohort shows an overwhelming drive to build and learn in the domains of ${top3.join(', ')}. We should structure our upcoming DEVCON Laguna workshops and civic tech hackathons around these core fields.`;
+      }
     } else {
       kwContainer.innerHTML = `<span style="color:var(--muted); font-size:13px;">No topic responses found yet.</span>`;
+      if (summaryTextEl) summaryTextEl.textContent = "Waiting for live applicant responses to compile topics.";
     }
   }
 
