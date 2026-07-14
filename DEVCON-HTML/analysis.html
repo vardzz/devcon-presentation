@@ -313,7 +313,7 @@ const paper = '#EDEFF5';
 const muted = '#8891AC';
 
 // >>> set this to your deployed Apps Script /exec URL <<<
-const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbxCu_-4ylhFULpQpI8aYmOq6eFU3eT5Iy8FzciVSj6G4jgrMhZUdVqwnVM4hf33YyE/exec';
+const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbwErBxOV3e0BSLJmG-pd9dvi5TNRuWgb6rmZJismxaFI5sAzIIhJ1_fo9Laj6Mlh0_U/exec';
 
 // How often to poll while the page stays open. The Apps Script side
 // caches its response for 2 minutes, so polling faster than that just
@@ -560,8 +560,19 @@ async function loadLiveData(isManual) {
   if (isManual) btn.disabled = true;
   setLiveStatus(hasLoadedOnce ? 'live' : 'loading', isManual ? 'Refreshing…' : 'Syncing…');
 
+  // Cache-busting: the /exec URL redirects to a googleusercontent.com content
+  // URL, and that redirect target can get cached by the browser even with
+  // cache:'no-store' set below -- the no-store hint doesn't reliably survive
+  // a redirect hop in every browser. Appending a timestamp makes the request
+  // URL different every single time, which no cache layer can serve a stale
+  // hit for. A manual refresh also passes nocache=1 to skip the Apps
+  // Script-side CacheService cache, for a guaranteed fresh sheet read.
+  const params = new URLSearchParams({ t: Date.now().toString() });
+  if (isManual) params.set('nocache', '1');
+  const requestUrl = `${SHEET_API_URL}?${params.toString()}`;
+
   try {
-    const res = await fetch(SHEET_API_URL, { cache: 'no-store' });
+    const res = await fetch(requestUrl, { cache: 'no-store' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
     processAndRender(data);
