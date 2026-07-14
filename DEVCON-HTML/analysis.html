@@ -129,6 +129,19 @@
   }
   .insight-card strong{color:var(--amber);}
 
+  .taglist{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px;
+    padding:5px 12px; border-radius:20px;
+    background:rgba(79,209,197,0.1); color:var(--teal);
+    border:1px solid rgba(79,209,197,0.25);
+    transition:background 0.2s ease, border-color 0.2s ease;
+  }
+  .tag:hover{
+    background:rgba(79,209,197,0.18);
+    border-color:rgba(79,209,197,0.4);
+  }
+
   footer{padding:36px 0 60px; text-align:center; color:var(--muted); font-size:12.5px;}
   footer .mono{color:#5d6688;}
 </style>
@@ -247,6 +260,14 @@
         </div>
       </div>
     </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3>Top requested tools & technologies</h3>
+      <div class="card-note">Keywords extracted from open-ended "dying to learn" responses</div>
+      <div class="taglist" id="learnKeywordsList">
+        <span style="color:var(--muted); font-size:13px;">Analyzing topics...</span>
+      </div>
+    </div>
   </section>
 
   <!-- 04 MOTIVATION -->
@@ -341,7 +362,11 @@ const FALLBACK_DATA = {
   skillLevels: { "1": 2, "2": 20, "3": 27, "4": 11, "5": 0 },
   volunteerInterest: { "Yes, sign me up! I want an active volunteer/committee role.": 40, "Maybe later. I prefer to start as a general member first.": 20 },
   committees: { program: 25, tech: 22, marketing: 15, finance: 11, comms: 10, partnership: 7, unspecified: 0 },
-  committeeRespondents: 44
+  committeeRespondents: 44,
+  learnKeywords: {
+    "react": 15, "python": 12, "node": 9, "figma": 8, "git": 7, "docker": 6,
+    "javascript": 10, "tailwind": 5, "aws": 4, "flutter": 4, "sql": 3, "mongodb": 3
+  }
 };
 
 function tip(){
@@ -521,6 +546,27 @@ function processAndRender(apiData) {
   const avg = total ? (((lvl1*1)+(lvl2*2)+(lvl3*3)+(lvl4*4)+(lvl5*5)) / total).toFixed(1) : "0.0";
   document.getElementById("skill-text-body").textContent =
     `most applicants place themselves at an intermediate level (average rating: ${avg} out of 5, with ${midLevelCount} of ${total} rating themselves 2 or 3) — solid ground for hands-on workshops and hackathons, not introductory "what is a variable" content. ${lvl5 > 0 ? lvl5 + ' applicant(s) rated themselves a 5.' : 'Nobody rated themselves a 5.'}`;
+
+  // --- render learn keywords (open-ended question) ---
+  const kwContainer = document.getElementById("learnKeywordsList");
+  if (kwContainer) {
+    kwContainer.innerHTML = "";
+    const kwData = apiData.learnKeywords || {};
+    const sortedKws = Object.entries(kwData)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 15); // Show top 15 keywords
+      
+    if (sortedKws.length > 0) {
+      sortedKws.forEach(([kw, count]) => {
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = `${kw} (${count})`;
+        kwContainer.appendChild(tag);
+      });
+    } else {
+      kwContainer.innerHTML = `<span style="color:var(--muted); font-size:13px;">No topic responses found yet.</span>`;
+    }
+  }
 
   document.getElementById("volunteer-count-2").textContent = volunteerYes;
   document.getElementById("volunteer-percent-2").textContent = `${volunteerPercent}%`;
