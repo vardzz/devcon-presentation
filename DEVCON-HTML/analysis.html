@@ -298,7 +298,7 @@
   </section>
 
   <!-- 05 VOLUNTEERS -->
-  <section style="border-bottom:none;">
+  <section>
     <div class="eyebrow">[ 05 // Organizing Capacity ]</div>
     <h2>A ready-made core team, unevenly distributed</h2>
     <p class="section-intro"><span id="volunteer-count-2">–</span> of <span id="total-applicants-5">–</span> applicants (<span id="volunteer-percent-2">–</span>) want an active volunteer or committee role rather than passive membership. Interest concentrates in event operations and technical work.</p>
@@ -323,6 +323,36 @@
       <div class="chart-box tall"><canvas id="chartCommittee"></canvas></div>
       <div class="insight-card" style="margin-top:16px;">
         <strong>Read:</strong> Program Operations and Technical committees can be staffed immediately. Internal/External Communications and Partnership & Fundraising are the gaps — worth direct recruitment or mentorship rather than waiting for organic interest.
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 CAMPAIGN IMPACT -->
+  <section style="border-bottom:none; padding-bottom: 24px;">
+    <div class="eyebrow">[ 06 // Campaign Impact ]</div>
+    <h2>Promotional Video Launch Success</h2>
+    <p class="section-intro">A comparison of cohort registrations before and after the DEVCON Laguna promotional video was launched on Facebook on July 12.</p>
+
+    <div class="grid-2">
+      <div class="card highlight-card" style="border-left: 4px solid var(--amber); background: linear-gradient(135deg, var(--panel) 0%, rgba(22, 29, 51, 0.7) 100%);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <span class="dot live" style="width: 8px; height: 8px; background: var(--amber); box-shadow: 0 0 8px var(--amber); animation: pulse 2s infinite;"></span>
+          <h3 style="color: var(--amber); font-family: 'Space Grotesk', sans-serif;">Facebook Launch Impact</h3>
+        </div>
+        <div class="card-note">Launch Date: July 12, 2026</div>
+        <p style="font-size: 14.5px; line-height: 1.6; color: var(--paper);">
+          Before the promotional video was posted, registration stood at <strong>48</strong> participants. Following the launch on our Facebook page, registrations surged to <strong id="campaign-total-count">62</strong>, gaining <strong id="campaign-new-text">14 new participants</strong> within 3 days.
+        </p>
+      </div>
+
+      <div class="card callout">
+        <div class="big-stat-wrapper">
+          <div class="big-stat main-val" style="color: var(--amber);" id="campaign-growth-rate">+29.2%</div>
+          <div class="big-stat hover-val" style="color: var(--teal);" id="campaign-new-count">+14 Applicants</div>
+        </div>
+        <p style="color: var(--muted); font-size: 14px;">
+          Growth in registration since the promotional video upload, representing a rapid acceleration of cohort interest.
+        </p>
       </div>
     </div>
   </section>
@@ -627,6 +657,23 @@ function processAndRender(apiData) {
   document.getElementById("bigstat-volunteer-percent").textContent = `${volunteerPercent}%`;
   document.getElementById("bigstat-volunteer-count").textContent = `${volunteerYes} / ${total}`;
   document.getElementById("committee-total-count").textContent = committeeTotal;
+
+  // --- calculate promotional video impact dynamically ---
+  const baseline = 48;
+  const growth = total - baseline;
+  const growthPct = total ? ((growth / baseline) * 100).toFixed(1) : "0.0";
+  
+  const compTotalEl = document.getElementById("campaign-total-count");
+  if (compTotalEl) compTotalEl.textContent = total;
+  
+  const compNewTextEl = document.getElementById("campaign-new-text");
+  if (compNewTextEl) compNewTextEl.textContent = `${growth} new participants`;
+  
+  const compNewCountEl = document.getElementById("campaign-new-count");
+  if (compNewCountEl) compNewCountEl.textContent = `+${growth} Applicants`;
+  
+  const compGrowthEl = document.getElementById("campaign-growth-rate");
+  if (compGrowthEl) compGrowthEl.textContent = `+${growthPct}%`;
 
   initCharts({
     undergradTech, employedTech, undergradNonTech, freelancer, enthusiast,
