@@ -163,9 +163,15 @@ footer .mono{color:#5d6688;}
 
 /* ---- NAVIGATION BAR & ONBOARDING PAGE ---- */
 .nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15, 20, 36, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   gap: 12px;
-  padding: 24px 0 0 0;
+  padding: 16px 0 0 0;
   border-bottom: 1px solid var(--line);
   margin-bottom: 8px;
 }
