@@ -160,3 +160,125 @@ h2{ font-family:'Space Grotesk', sans-serif; font-size:clamp(22px,3vw,30px); fon
 
 footer{padding:36px 0 60px; text-align:center; color:var(--muted); font-size:12.5px;}
 footer .mono{color:#5d6688;}
+
+/* ---- NAVIGATION BAR & ONBOARDING PAGE ---- */
+.nav-bar {
+  display: flex;
+  gap: 12px;
+  padding: 24px 0 0 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 8px;
+}
+.nav-tab {
+  padding: 10px 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-tab:hover {
+  color: var(--paper);
+  background: rgba(237, 239, 245, 0.03);
+  border-radius: 6px 6px 0 0;
+}
+.nav-tab.active {
+  color: var(--amber);
+  border-bottom-color: var(--amber);
+}
+.page-view {
+  display: none;
+}
+.page-view.active {
+  display: block;
+}
+
+.onboarding-table-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+.report-table th, .report-table td {
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+.report-table th {
+  background: var(--panel-2);
+  color: var(--amber);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  width: 25%;
+  border-right: 1px solid var(--line);
+}
+.report-table td {
+  color: var(--paper);
+}
+.report-table tr:last-child th, .report-table tr:last-child td {
+  border-bottom: none;
+}
+.summary-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media(max-width:760px){
+  .summary-metrics-grid { grid-template-columns: 1fr; }
+}
+.metric-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+}
+.metric-card .value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.metric-card .label {
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.list-bullet {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+}
+.list-bullet li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  color: var(--paper);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+.list-bullet li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  color: var(--teal);
+  font-size: 18px;
+  line-height: 1;
+}
+
