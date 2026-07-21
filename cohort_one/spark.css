@@ -10,6 +10,9 @@
   --muted:#8891AC;
   --line: rgba(237,239,245,0.08);
 }
+html {
+  scroll-behavior: smooth;
+}
 *{box-sizing:border-box; margin:0; padding:0;}
 body{
   background:var(--ink);
@@ -22,6 +25,19 @@ body{
 .display{font-family:'Space Grotesk', sans-serif;}
 
 .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+/* ---- LUXURIOUS SCROLL REVEAL ANIMATIONS ---- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* ---- HEADER ---- */
 .header{ padding:36px 0 12px; display:flex; justify-content:center; }
